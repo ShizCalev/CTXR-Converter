@@ -538,12 +538,12 @@ def batch_convert_png_to_ctxr():
 
         new_mipmaps = []
         if mipmap_count > 1 and original_mipmap_info_local:
-            mipmaps = [image_bgra]
+            mipmaps = [image]
             curr_w, curr_h = width, height
             for i in range(1, mipmap_count):
                 curr_w = max(1, curr_w // 2)
                 curr_h = max(1, curr_h // 2)
-                mip_image = image_bgra.resize((curr_w, curr_h), Image.LANCZOS)
+                mip_image = image.resize((curr_w, curr_h), Image.LANCZOS)
                 mipmaps.append(mip_image)
             for i, mip_image in enumerate(mipmaps[1:]):
                 new_data = mip_image.tobytes("raw", "BGRA")
